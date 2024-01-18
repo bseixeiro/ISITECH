@@ -129,11 +129,6 @@ $git commit -m "message"
 ```
 faire un commit avec le titre
 
-```sh
-$git commit -a -m "message"
-```
-ajout des modifs et commit
-
 **Indexé/Desindexé un fichier**
 ```sh
 $git add .
@@ -205,7 +200,7 @@ $ git show v1.4
 ```
 pour visualiser un tag précis 
 
-**SSh Key Github** 
+** SSh Key Github ** 
 
 https://docs.github.com/fr/authentication/connecting-to-github-with-ssh
 
@@ -244,84 +239,3 @@ lister les remote
 **.gitignore**
 
 .gitignore permet de dire a git quel fichier ou dossier ignorer => de facon recursive  
-
-**Branche**
-
-La balise Head nous sert à savoir sur quel commit on se trouve
-
-```sh
-$ git branch <BranchName>
-```
-créer une branche
-
-La création d'une branche ne nous fais pas changer de branche
-
-```sh
-$ git checkout <BranchName>
-```
-basculer sur une autre branche
-
-```sh
-$ git checkout -b <BranchName>
-```
-création et basculement vers la nouvelle branche
-
-```sh
-$ git branch -a
-$ git branch --all
-```
-lister toutes les branches y compris celles des remotes
-
-```sh
-$ git fetch <distant>
-```
-permet de synchroniser ses travaux, elle recherche le serveur <distant> et recupere les modifs apporte
-
-
-Pour récupérer des modifs sur des nouvelles branches :
-```sh
-$ git fetch <distant>
-```
-
-Pour récupérer des modifs sur une branche distante et fusionner avec la branche local :
-```sh
-$ git pull <distant> <branch>
-```
-
-Règle d'or de commencement git:
-`commit` -> `pull` -> `push`
-
-Lorsque l'on récupère la branche distante, une branche local ne se créer pas automatiquement, il faut donc en créer une et la lier :
-```sh
-$ git checkout -b <branchName> <distant>/<branchName>
-$ git checkout --track <distant>/<branchName>
-```
-Pour voir les branches suivies et savoir si votre branche local est en avance ou en retard sur la branche distante:
-```sh
-$ git fetch --all
-$ git branch -vv
-```
-```sh
-$ git push origin --delete <branchName>
-```
-supprimer une branche distante
-
-**Rebase/Merge**
-
-```sh
-$ git checkout main
-$ git merge develop
-```
-permet de fusionner la branche de dev sur la branche principale
-Cette action n'est pas destructive et est traçable
-
-contrairement à un rebase :
-```sh
-$ git checkout develop
-$ git rebase main 
-```
-permet de rebaser la dev sur la principale
-Cette action peut être destructive et fait perdre des infos sur la traçabilité car supprime l'historique depuis la création de la branche -> à faire que si l'on est sur de ce que l on fait
-
-
-
